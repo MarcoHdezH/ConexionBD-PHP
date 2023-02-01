@@ -1,5 +1,5 @@
 <?php
-function obtenerServicios(){
+function obtenerServicios() : array{
 
     try{
 
@@ -9,11 +9,22 @@ function obtenerServicios(){
 
         $consulta = mysqli_query($db,$sql);
 
-        echo "<pre>";
-        var_dump(mysqli_fetch_all($consulta));
-        echo "</pre>";
+        $Servicios = [];
 
-    }catch(\Throwable $th){
+        $i=0;
+
+        while($row = mysqli_fetch_assoc($consulta)){
+            $Servicios[$i]['id']=$row['id'];
+            $Servicios[$i]['nombre']=$row['nombre'];
+            $Servicios[$i]['precio']=$row['precio'];
+
+            $i++;
+        }
+
+        return $Servicios;
+
+
+    }catch(Throwable $th){
         var_dump($th);
     }
 

@@ -6,5 +6,4 @@ if(!$db){
     echo "Error en la conexion";
     exit;
 }
-echo "Conexion Correcta";
 ?>
